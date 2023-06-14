@@ -43,6 +43,25 @@ type ChatCompletionRequest struct {
 	FrequencyPenalty float32                 `json:"frequency_penalty,omitempty"`
 	LogitBias        map[string]int          `json:"logit_bias,omitempty"`
 	User             string                  `json:"user,omitempty"`
+	Functions        []CallableFunction      `json:"functions,omitempty"`
+}
+
+type CallableFunction struct {
+	Name        string                       `json:"name"`
+	Description string                       `json:"description"`
+	Parameters  []CallableFunctionParameters `json:"parameters"`
+}
+
+type CallableFunctionParameters struct {
+	Type       string                               `json:"type"`
+	Properties map[string]CallableFunctionParameter `json:"properties"`
+	Required   []string                             `json:"required"`
+}
+
+type CallableFunctionParameter struct {
+	Type        string   `json:"type"`
+	Description string   `json:"description"`
+	Enum        []string `json:"enum"`
 }
 
 type ChatCompletionChoice struct {
