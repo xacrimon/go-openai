@@ -53,9 +53,9 @@ type ChatCompletionRequest struct {
 }
 
 type CallableFunction struct {
-	Name        string                       `json:"name"`
-	Description string                       `json:"description"`
-	Parameters  []CallableFunctionParameters `json:"parameters"`
+	Name        string                     `json:"name"`
+	Description string                     `json:"description"`
+	Parameters  CallableFunctionParameters `json:"parameters"`
 }
 
 type CallableFunctionParameters struct {
